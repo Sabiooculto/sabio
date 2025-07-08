@@ -24,6 +24,7 @@
             --cor-borda: #dee2e6;
             --cor-sombra-botao: rgba(0, 31, 63, 0.15);
             --cor-sombra-botao-hover: rgba(0, 31, 63, 0.25);
+            --cor-sombra-card: rgba(0, 0, 0, 0.07);
         }
 
         /* TEMA ESCURO (ATIVADO PELA PREFERÊNCIA DO USUÁRIO) */
@@ -36,19 +37,15 @@
                 --cor-branco: #FFFFFF;
                 --cor-secao-clara: #222529; /* Cinza escuro para seções */
                 --cor-texto-secundario: #a9a9a9;
-                --cor-borda: #333;
+                --cor-borda: #444;
                 --cor-sombra-botao: rgba(240, 185, 11, 0.2);
                 --cor-sombra-botao-hover: rgba(240, 185, 11, 0.3);
+                --cor-sombra-card: rgba(0, 0, 0, 0.15);
             }
             
-            /* Estilo do botão para o TEMA ESCURO */
             .cta-button {
                 background-color: var(--cor-titulo);
-                color: #1A1A1A; /* Texto escuro no botão claro */
-            }
-            
-            .prova-frase {
-               color: var(--cor-texto);
+                color: #1A1A1A;
             }
         }
 
@@ -95,6 +92,8 @@
 
         h1 {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
+            max-width: 750px; /* Garante que o H1 não fique muito largo em telas grandes */
+            margin: 0 auto; /* Centraliza o H1 se ele for menor que o container */
         }
 
         h2 {
@@ -106,12 +105,11 @@
             max-width: 600px;
             margin: 0 auto 1.5rem auto;
         }
-            
+                
         /* ------------------- */
         /* 4. COMPONENTES        */
         /* ------------------- */
 
-        /* BOTÃO CTA */
         .cta-button {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -142,12 +140,12 @@
         /* 5. ESTILOS DE SEÇÃO   */
         /* ------------------- */
 
-        /* HERO */
         .hero {
             min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
         }
 
         .hero .subtitulo {
@@ -156,7 +154,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* DOR */
         .dor ul {
             list-style: none;
             max-width: 500px;
@@ -183,7 +180,6 @@
             color: var(--cor-titulo);
         }
 
-        /* REVELAÇÃO */
         .revelacao {
             background-color: var(--cor-secao-clara);
             transition: background-color 0.3s;
@@ -196,12 +192,17 @@
             text-align: left;
             padding: 0 1rem;
         }
-            
+                
         .revelacao li {
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
             display: flex;
             align-items: flex-start;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .revelacao li:hover {
+            transform: translateX(10px);
         }
 
         .revelacao li::before {
@@ -211,20 +212,43 @@
             color: var(--cor-destaque);
         }
 
-        /* PROVA SOCIAL */
         .prova-social {
             background-color: var(--cor-secao-clara);
             transition: background-color 0.3s;
         }
         
-        .prova-frase {
-            margin-top: 2rem;
-            font-style: italic;
-            font-size: 1.1rem;
-            color: var(--cor-titulo);
+        .depoimentos-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem; 
+            max-width: 650px;
+            margin: 2rem auto 0 auto;
         }
 
-        /* OFERTA FINAL */
+        .depoimento-card {
+            background-color: var(--cor-fundo);
+            border: 1px solid var(--cor-borda);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: left;
+            box-shadow: 0 4px 15px var(--cor-sombra-card);
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .depoimento-texto {
+            margin: 0 0 1rem 0;
+            font-style: italic;
+            color: var(--cor-texto);
+        }
+
+        .depoimento-nome {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--cor-titulo);
+            margin: 0;
+            text-align: right;
+        }
+
         .oferta h2 {
             color: var(--cor-destaque);
         }
@@ -245,14 +269,13 @@
         .oferta .cta-button:active {
             transform: scale(1.1) translateY(-1px);
         }
-            
+                
         .oferta .garantia {
             font-size: 0.9rem;
             margin-top: 1.5rem;
             color: var(--cor-texto-secundario);
         }
-            
-        /* FOOTER */
+                
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -262,19 +285,44 @@
             transition: color 0.3s, border-color 0.3s;
         }
 
-        /* -------------------------------- */
-        /* 6. AJUSTES PARA DISPOSITIVOS MÓVEIS */
-        /* -------------------------------- */
+        /* ------------------------------------ */
+        /* 6. ESTILOS PARA NOVAS ANIMAÇÕES      */
+        /* ------------------------------------ */
 
-        @media (max-width: 768px) {
+        /* SUGESTÃO 1: Barra de Progresso */
+        #barra-progresso {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background-color: var(--cor-destaque);
+            width: 0%;
+            z-index: 100;
+            transition: width 0.1s linear;
+        }
+
+        /* SUGESTÃO 2: Animação de Entrada (Scroll Reveal) */
+        .secao-animada {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .secao-animada.visivel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ---------------------------------------------------- */
+        /* 7. AJUSTES PARA DISPOSITIVOS MÓVEIS E TELAS MENORES  */
+        /* ---------------------------------------------------- */
+
+        @media (max-width: 992px) { 
             section {
                 padding: 2.5rem 0;
             }
-
             h2 {
                 margin-bottom: 1.5rem;
             }
-
             .hero {
                 min-height: 85vh;
             }
@@ -283,16 +331,18 @@
 </head>
 <body>
 
+    <div id="barra-progresso"></div>
+
     <header class="hero">
         <div class="container">
             <h1>Você está postando, se esforçando, mas o TikTok continua te ignorando?</h1>
-            <p class="subtitulo">Descubra o ecossistema invisível que transforma vídeos comuns em dólares na sua conta.<br>O que os influenciadores não contam, o Sábio Oculto vai revelar.</p>
-            <a href="https://mpago.la/2PeHWdB" class="cta-button">Acesse os Segredos em Dólar</a>
+            <p class="subtitulo secao-animada">Descubra o ecossistema invisível que transforma vídeos comuns em dólares na sua conta.<br>O que os influenciadores não contam, o Sábio Oculto vai revelar.</p>
+            <a href="https://mpago.la/2PeHWdB" class="cta-button secao-animada">Acesse os Segredos em Dólar</a>
         </div>
     </header>
 
     <main>
-        <section class="dor">
+        <section class="dor secao-animada">
             <div class="container">
                 <h2>Se você já...</h2>
                 <ul>
@@ -304,7 +354,7 @@
             </div>
         </section>
 
-        <section class="revelacao">
+        <section class="revelacao secao-animada">
             <div class="container">
                 <h2>Existe um ecossistema invisível por trás dos vídeos virais.</h2>
                 <p>Quem cresce e lucra no TikTok não está apenas postando vídeos… Eles fazem parte de um jogo estratégico, onde cada detalhe segue um plano oculto de conversão. Esse conhecimento está escondido, mas não para quem sabe onde olhar.</p>
@@ -317,21 +367,36 @@
             </div>
         </section>
 
-        <section class="autoridade">
+        <section class="autoridade secao-animada">
             <div class="container">
                 <h2>Quem está por trás do véu?</h2>
                 <p>O Sábio Oculto não é um guru, mas sim alguém que entendeu o sistema. Após testar centenas de estratégias, ele encontrou o que realmente funciona — e agora revela os segredos que nunca aparecem nos vídeos virais.</p>
             </div>
         </section>
         
-        <section class="prova-social">
+        <section class="prova-social secao-animada">
             <div class="container">
                 <h2>Não acredite em mim. Acredite nos resultados.</h2>
-                <p class="prova-frase">"Eu saí de 500 visualizações para meu primeiro mês com mais de $1.200 dólares. É outro jogo."</p>
+                
+                <div class="depoimentos-container">
+                    <div class="depoimento-card">
+                        <p class="depoimento-texto">"Eu saí de 500 visualizações para meu primeiro mês com mais de $<span class="contador" data-valor-final="1200">0</span> dólares. É outro jogo. Simplesmente surreal o que é ensinado aqui."</p>
+                        <p class="depoimento-nome">- Julia S.</p>
+                    </div>
+                    <div class="depoimento-card">
+                        <p class="depoimento-texto">"Pensei que era mais um curso genérico, mas o conteúdo sobre monetização sem ser 'influencer' abriu minha mente. Já recuperei o investimento em 1 semana."</p>
+                        <p class="depoimento-nome">- Marcos P.</p>
+                    </div>
+                     <div class="depoimento-card">
+                        <p class="depoimento-texto">"Finalmente entendi o que estava fazendo de errado. O módulo sobre o 'ecossistema de conversão' vale ouro. Recomendo demais!"</p>
+                        <p class="depoimento-nome">- Beatriz L.</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
-        <section id="oferta" class="oferta">
+        <section id="oferta" class="oferta secao-animada">
             <div class="container">
                 <h2>Agora o conhecimento não está mais oculto.</h2>
                 <p class="subtexto">Mas estará por pouco tempo.</p>
@@ -342,11 +407,68 @@
         </section>
     </main>
 
-    <footer>
+    <footer class="secao-animada">
         <div class="container">
             <p>&copy; 2025 Sábio Oculto. Todos os direitos reservados. A revelação espera por você.</p>
         </div>
     </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- LÓGICA PARA SUGESTÃO 1: BARRA DE PROGRESSO ---
+            const barraProgresso = document.getElementById('barra-progresso');
+            
+            function atualizarBarraProgresso() {
+                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+                const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+                barraProgresso.style.width = `${scrollPercent}%`;
+            }
+            window.addEventListener('scroll', atualizarBarraProgresso);
+
+
+            // --- LÓGICA PARA SUGESTÕES 3 (SCROLL REVEAL) E 4 (CONTADOR) ---
+            const observador = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Animação de entrada
+                        entry.target.classList.add('visivel');
+
+                        // Lógica do contador
+                        const contador = entry.target.querySelector('.contador');
+                        if (contador && !contador.classList.contains('animado')) {
+                            animarContador(contador);
+                            contador.classList.add('animado'); // Garante que a animação só rode uma vez
+                        }
+
+                        observador.unobserve(entry.target); // Deixa de observar após a animação
+                    }
+                });
+            }, { threshold: 0.1 }); // Ativa quando 10% do elemento está visível
+
+            // Observar todas as seções animadas
+            const secoesAnimadas = document.querySelectorAll('.secao-animada, .depoimento-card');
+            secoesAnimadas.forEach(secao => observador.observe(secao));
+
+            // Função para animar o contador
+            function animarContador(elemento) {
+                const valorFinal = parseInt(elemento.getAttribute('data-valor-final'), 10);
+                let valorInicial = 0;
+                const duracao = 2000; // 2 segundos
+                const incremento = Math.ceil(valorFinal / (duracao / 16));
+
+                const intervalo = setInterval(() => {
+                    valorInicial += incremento;
+                    if (valorInicial >= valorFinal) {
+                        elemento.innerText = valorFinal.toLocaleString('pt-BR'); // Formata para "1.200"
+                        clearInterval(intervalo);
+                    } else {
+                        elemento.innerText = valorInicial.toLocaleString('pt-BR');
+                    }
+                }, 16); // ~60fps
+            }
+        });
+    </script>
 
 </body>
 </html>
