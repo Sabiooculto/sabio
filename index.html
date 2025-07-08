@@ -6,51 +6,35 @@
     <title>Sábio Oculto - O Ecossistema Invisível</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* ------------------- */
-        /* 1. ESTÉTICA VISUAL  */
+        /* 1. ESTÉTICA GERAL (Estilo Apple) */
         /* ------------------- */
-
-        /* TEMA CLARO (PADRÃO) */
         :root {
-            --cor-fundo: #FFFFFF;
-            --cor-texto: #1A1A1A;
-            --cor-titulo: #001F3F; /* Azul-Marinho Escuro */
-            --cor-destaque: #B8860B; /* Dourado Discreto */
-            --cor-branco: #FFFFFF;
-            --cor-secao-clara: #f8f9fa;
-            --cor-texto-secundario: #6c757d;
-            --cor-borda: #dee2e6;
-            --cor-sombra-botao: rgba(0, 31, 63, 0.15);
-            --cor-sombra-botao-hover: rgba(0, 31, 63, 0.25);
-            --cor-sombra-card: rgba(0, 0, 0, 0.07);
+            --cor-fundo: #f5f5f7;
+            --cor-fundo-card: #ffffff;
+            --cor-texto-primario: #1d1d1f;
+            --cor-texto-secundario: #6e6e73;
+            --cor-destaque: #b8860b; /* Dourado do design original como destaque */
+            --cor-botao-fundo: #0071e3; /* Azul padrão Apple para CTAs */
+            --cor-botao-texto: #ffffff;
+            --sombra-card: rgba(0, 0, 0, 0.08) 0px 8px 24px;
         }
 
-        /* TEMA ESCURO (ATIVADO PELA PREFERÊNCIA DO USUÁRIO) */
         @media (prefers-color-scheme: dark) {
             :root {
-                --cor-fundo: #1A1A1A;
-                --cor-texto: #E0E0E0;
-                --cor-titulo: #F0B90B; /* Dourado mais vibrante */
-                --cor-destaque: #DAA520;
-                --cor-branco: #FFFFFF;
-                --cor-secao-clara: #222529; /* Cinza escuro para seções */
-                --cor-texto-secundario: #a9a9a9;
-                --cor-borda: #444;
-                --cor-sombra-botao: rgba(240, 185, 11, 0.2);
-                --cor-sombra-botao-hover: rgba(240, 185, 11, 0.3);
-                --cor-sombra-card: rgba(0, 0, 0, 0.15);
-            }
-            
-            .cta-button {
-                background-color: var(--cor-titulo);
-                color: #1A1A1A;
+                --cor-fundo: #000000;
+                --cor-fundo-card: #1d1d1f;
+                --cor-texto-primario: #f5f5f7;
+                --cor-texto-secundario: #a1a1a6;
+                --cor-destaque: #F0B90B;
+                --cor-botao-fundo: #0077ed;
             }
         }
 
         /* ------------------- */
-        /* 2. ESTILOS GERAIS (BASE) */
+        /* 2. ESTILOS BASE     */
         /* ------------------- */
         * {
             margin: 0;
@@ -63,301 +47,249 @@
         }
 
         body {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--cor-fundo);
-            color: var(--cor-texto);
-            line-height: 1.7;
-            transition: background-color 0.3s, color 0.3s;
+            color: var(--cor-texto-primario);
+            line-height: 1.6;
+            transition: background-color 0.4s, color 0.4s;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* ------------------- */
-        /* 3. LAYOUT E ESTRUTURA */
+        /* 3. LAYOUT E GRID    */
         /* ------------------- */
         .container {
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
 
-        section {
-            padding: 4rem 0;
+        header, section {
+            padding: 60px 0;
             text-align: center;
         }
 
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        /* ------------------- */
+        /* 4. TIPOGRAFIA       */
+        /* ------------------- */
         h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-            color: var(--cor-titulo);
-            line-height: 1.3;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--cor-texto-primario);
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            max-width: 750px; /* Garante que o H1 não fique muito largo em telas grandes */
-            margin: 0 auto; /* Centraliza o H1 se ele for menor que o container */
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            color: var(--cor-texto-secundario);
+            max-width: 650px;
+            margin: 20px auto 30px auto;
+        }
+        
         h2 {
-            font-size: clamp(2rem, 4vw, 2.5rem);
-            margin-bottom: 2rem;
+           font-size: clamp(2rem, 5vw, 2.8rem);
+           margin-bottom: 20px;
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
-        p {
-            max-width: 600px;
-            margin: 0 auto 1.5rem auto;
+        .card p, .card li {
+            color: var(--cor-texto-secundario);
+            font-size: 1rem;
         }
-                
+        
         /* ------------------- */
-        /* 4. COMPONENTES        */
+        /* 5. COMPONENTES      */
         /* ------------------- */
-
         .cta-button {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.1rem;
-            text-decoration: none;
-            background-color: var(--cor-titulo);
-            color: var(--cor-branco);
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
             display: inline-block;
-            box-shadow: 0 4px 12px var(--cor-sombra-botao);
-            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, color 0.3s;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            background-color: var(--cor-botao-fundo);
+            color: var(--cor-botao-texto);
+            padding: 12px 24px;
+            border-radius: 980px;
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px var(--cor-sombra-botao-hover);
+            opacity: 0.85;
+            transform: translateY(-2px);
         }
 
-        .cta-button:active {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px var(--cor-sombra-botao);
-        }
-
-        /* ------------------- */
-        /* 5. ESTILOS DE SEÇÃO   */
-        /* ------------------- */
-
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero .subtitulo {
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .dor ul {
-            list-style: none;
-            max-width: 500px;
-            margin: 2rem auto;
+        .card {
+            background-color: var(--cor-fundo-card);
+            border-radius: 20px;
+            padding: 40px;
             text-align: left;
-            padding: 0 1rem;
-        }
-
-        .dor li {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .dor li::before {
-            content: '❌';
-            margin-right: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .dor .convite-final {
-            font-weight: 700;
-            color: var(--cor-titulo);
-        }
-
-        .revelacao {
-            background-color: var(--cor-secao-clara);
-            transition: background-color 0.3s;
-        }
-
-        .revelacao ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 2rem auto;
-            text-align: left;
-            padding: 0 1rem;
-        }
-                
-        .revelacao li {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .revelacao li:hover {
-            transform: translateX(10px);
-        }
-
-        .revelacao li::before {
-            content: '✅';
-            margin-right: 1rem;
-            font-size: 1.2rem;
-            color: var(--cor-destaque);
-        }
-
-        .prova-social {
-            background-color: var(--cor-secao-clara);
-            transition: background-color 0.3s;
+            box-shadow: var(--sombra-card);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* Para animação de entrada */
+            transform: translateY(30px); /* Para animação de entrada */
         }
         
-        .depoimentos-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem; 
-            max-width: 650px;
-            margin: 2rem auto 0 auto;
-        }
-
-        .depoimento-card {
-            background-color: var(--cor-fundo);
-            border: 1px solid var(--cor-borda);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: left;
-            box-shadow: 0 4px 15px var(--cor-sombra-card);
-            transition: border-color 0.3s, background-color 0.3s;
-        }
-
-        .depoimento-texto {
-            margin: 0 0 1rem 0;
-            font-style: italic;
-            color: var(--cor-texto);
-        }
-
-        .depoimento-nome {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            color: var(--cor-titulo);
-            margin: 0;
-            text-align: right;
-        }
-
-        .oferta h2 {
-            color: var(--cor-destaque);
-        }
-
-        .oferta .subtexto {
-            margin-top: -1rem;
-        }
-
-        .oferta .cta-button {
-            transform: scale(1.1);
-            margin-top: 2rem;
-        }
-
-        .oferta .cta-button:hover {
-            transform: scale(1.1) translateY(-4px);
-        }
-
-        .oferta .cta-button:active {
-            transform: scale(1.1) translateY(-1px);
-        }
-                
-        .oferta .garantia {
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-            color: var(--cor-texto-secundario);
-        }
-                
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-            color: var(--cor-texto-secundario);
-            border-top: 1px solid var(--cor-borda);
-            transition: color 0.3s, border-color 0.3s;
-        }
-
-        /* ------------------------------------ */
-        /* 6. ESTILOS PARA NOVAS ANIMAÇÕES      */
-        /* ------------------------------------ */
-
-        /* SUGESTÃO 1: Barra de Progresso */
-        #barra-progresso {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 5px;
-            background-color: var(--cor-destaque);
-            width: 0%;
-            z-index: 100;
-            transition: width 0.1s linear;
-        }
-
-        /* SUGESTÃO 2: Animação de Entrada (Scroll Reveal) */
-        .secao-animada {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .secao-animada.visivel {
+        .card.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* ---------------------------------------------------- */
-        /* 7. AJUSTES PARA DISPOSITIVOS MÓVEIS E TELAS MENORES  */
-        /* ---------------------------------------------------- */
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* ------------------- */
+        /* 6. ESTILOS DE SEÇÃO */
+        /* ------------------- */
 
-        @media (max-width: 992px) { 
-            section {
-                padding: 2.5rem 0;
-            }
-            h2 {
-                margin-bottom: 1.5rem;
-            }
-            .hero {
-                min-height: 85vh;
+        /* Estilo para cards de maior destaque */
+        .card.card-large {
+            grid-column: 1 / -1; /* Ocupa a largura total */
+            text-align: center;
+        }
+
+        .card.card-large h3 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .card.card-large p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Seção "Dor" */
+        .dor li {
+            list-style: none;
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+        .dor li::before {
+            content: '❌';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Seção "Revelação" */
+        .revelacao ul {
+            list-style: none;
+            padding: 0;
+        }
+        .revelacao li {
+            margin-bottom: 1rem;
+            padding-left: 30px;
+            position: relative;
+        }
+        .revelacao li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1rem;
+            color: var(--cor-destaque);
+        }
+
+        /* Prova Social */
+        .depoimento-texto {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .depoimento-nome {
+            font-weight: 600;
+            text-align: right;
+            color: var(--cor-texto-primario);
+        }
+
+        /* Oferta Final */
+        #oferta h2 {
+            color: var(--cor-destaque);
+        }
+        #oferta .subtexto {
+            color: var(--cor-texto-secundario);
+            margin-top: -15px;
+            margin-bottom: 30px;
+        }
+        #oferta .garantia {
+            font-size: 0.9rem;
+            color: var(--cor-texto-secundario);
+            margin-top: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            color: var(--cor-texto-secundario);
+            font-size: 0.9rem;
+        }
+        @media (prefers-color-scheme: dark) {
+            footer {
+                border-top: 1px solid #333;
             }
         }
     </style>
 </head>
 <body>
 
-    <div id="barra-progresso"></div>
-
     <header class="hero">
         <div class="container">
             <h1>Você está postando, se esforçando, mas o TikTok continua te ignorando?</h1>
-            <p class="subtitulo secao-animada">Descubra o ecossistema invisível que transforma vídeos comuns em dólares na sua conta.<br>O que os influenciadores não contam, o Sábio Oculto vai revelar.</p>
-            <a href="https://mpago.la/2PeHWdB" class="cta-button secao-animada">Acesse os Segredos em Dólar</a>
+            <p>Descubra o ecossistema invisível que transforma vídeos comuns em dólares na sua conta. O que os influenciadores não contam, o Sábio Oculto vai revelar.</p>
+            <a href="https://mpago.la/2PeHWdB" class="cta-button">Acesse os Segredos em Dólar</a>
         </div>
     </header>
 
-    <main>
-        <section class="dor secao-animada">
-            <div class="container">
-                <h2>Se você já...</h2>
-                <ul>
-                    <li>Passou horas editando vídeos e teve menos de 100 views</li>
-                    <li>Tentou copiar os grandes, mas não cresceu nada</li>
-                    <li>Acreditou que “era só postar todo dia”... mas não deu certo</li>
-                </ul>
-                <p class="convite-final">Então essa página é pra você.</p>
+    <main class="container">
+        
+        <section class="dor">
+            <h2>Se você já se sentiu assim...</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <ul>
+                        <li>Passou horas editando vídeos e teve menos de 100 views</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <ul>
+                       <li>Tentou copiar os grandes, mas não cresceu nada</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <ul>
+                        <li>Acreditou que “era só postar todo dia”... mas não deu certo</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <section class="revelacao secao-animada">
-            <div class="container">
-                <h2>Existe um ecossistema invisível por trás dos vídeos virais.</h2>
+        <section class="revelacao">
+            <div class="card card-large">
+                <h3>Existe um ecossistema invisível por trás dos vídeos virais.</h3>
                 <p>Quem cresce e lucra no TikTok não está apenas postando vídeos… Eles fazem parte de um jogo estratégico, onde cada detalhe segue um plano oculto de conversão. Esse conhecimento está escondido, mas não para quem sabe onde olhar.</p>
+                <br>
                 <ul>
                     <li>Como transformar um vídeo de 15 segundos em uma máquina de venda em dólar</li>
                     <li>O segredo por trás da entrega (sem depender de sorte)</li>
@@ -366,107 +298,71 @@
                 </ul>
             </div>
         </section>
-
-        <section class="autoridade secao-animada">
-            <div class="container">
-                <h2>Quem está por trás do véu?</h2>
+        
+        <section class="autoridade">
+            <div class="card card-large">
+                <h3>Quem está por trás do véu?</h3>
                 <p>O Sábio Oculto não é um guru, mas sim alguém que entendeu o sistema. Após testar centenas de estratégias, ele encontrou o que realmente funciona — e agora revela os segredos que nunca aparecem nos vídeos virais.</p>
             </div>
         </section>
-        
-        <section class="prova-social secao-animada">
-            <div class="container">
-                <h2>Não acredite em mim. Acredite nos resultados.</h2>
-                
-                <div class="depoimentos-container">
-                    <div class="depoimento-card">
-                        <p class="depoimento-texto">"Eu saí de 500 visualizações para meu primeiro mês com mais de $<span class="contador" data-valor-final="1200">0</span> dólares. É outro jogo. Simplesmente surreal o que é ensinado aqui."</p>
-                        <p class="depoimento-nome">- Julia S.</p>
-                    </div>
-                    <div class="depoimento-card">
-                        <p class="depoimento-texto">"Pensei que era mais um curso genérico, mas o conteúdo sobre monetização sem ser 'influencer' abriu minha mente. Já recuperei o investimento em 1 semana."</p>
-                        <p class="depoimento-nome">- Marcos P.</p>
-                    </div>
-                     <div class="depoimento-card">
-                        <p class="depoimento-texto">"Finalmente entendi o que estava fazendo de errado. O módulo sobre o 'ecossistema de conversão' vale ouro. Recomendo demais!"</p>
-                        <p class="depoimento-nome">- Beatriz L.</p>
-                    </div>
-                </div>
 
+        <section class="prova-social">
+            <h2>Não acredite em mim. Acredite nos resultados.</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <p class="depoimento-texto">"Eu saí de 500 visualizações para meu primeiro mês com mais de $1200 dólares. É outro jogo. Simplesmente surreal o que é ensinado aqui."</p>
+                    <p class="depoimento-nome">- Julia S.</p>
+                </div>
+                <div class="card">
+                    <p class="depoimento-texto">"Pensei que era mais um curso genérico, mas o conteúdo sobre monetização sem ser 'influencer' abriu minha mente. Já recuperei o investimento em 1 semana."</p>
+                    <p class="depoimento-nome">- Marcos P.</p>
+                </div>
+                <div class="card">
+                    <p class="depoimento-texto">"Finalmente entendi o que estava fazendo de errado. O módulo sobre o 'ecossistema de conversão' vale ouro. Recomendo demais!"</p>
+                    <p class="depoimento-nome">- Beatriz L.</p>
+                </div>
             </div>
         </section>
 
-        <section id="oferta" class="oferta secao-animada">
-            <div class="container">
+        <section id="oferta">
+             <div class="card card-large">
                 <h2>Agora o conhecimento não está mais oculto.</h2>
                 <p class="subtexto">Mas estará por pouco tempo.</p>
                 <p>O acesso ao ecossistema invisível em dólar está liberado, mas só para quem agir enquanto o véu ainda está aberto. Em breve, essa oportunidade será retirada do ar.</p>
+                <br>
                 <a href="https://mpago.la/2PeHWdB" class="cta-button">🔓 Revelar os Segredos Agora</a>
                 <p class="garantia">Acesso imediato. Garantido. Sem enrolação.</p>
             </div>
         </section>
+        
     </main>
 
-    <footer class="secao-animada">
+    <footer>
         <div class="container">
             <p>&copy; 2025 Sábio Oculto. Todos os direitos reservados. A revelação espera por você.</p>
         </div>
     </footer>
-    
+
     <script>
+        // Lógica para animação de entrada dos cards (Scroll Reveal)
         document.addEventListener('DOMContentLoaded', function() {
-
-            // --- LÓGICA PARA SUGESTÃO 1: BARRA DE PROGRESSO ---
-            const barraProgresso = document.getElementById('barra-progresso');
-            
-            function atualizarBarraProgresso() {
-                const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-                const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
-                barraProgresso.style.width = `${scrollPercent}%`;
-            }
-            window.addEventListener('scroll', atualizarBarraProgresso);
-
-
-            // --- LÓGICA PARA SUGESTÕES 3 (SCROLL REVEAL) E 4 (CONTADOR) ---
             const observador = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        // Animação de entrada
-                        entry.target.classList.add('visivel');
-
-                        // Lógica do contador
-                        const contador = entry.target.querySelector('.contador');
-                        if (contador && !contador.classList.contains('animado')) {
-                            animarContador(contador);
-                            contador.classList.add('animado'); // Garante que a animação só rode uma vez
-                        }
-
-                        observador.unobserve(entry.target); // Deixa de observar após a animação
+                        entry.target.classList.add('is-visible');
+                        // Opcional: parar de observar após a animação
+                        // observador.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 }); // Ativa quando 10% do elemento está visível
+            }, { 
+                threshold: 0.1 // Ativa quando 10% do elemento está visível
+            });
 
-            // Observar todas as seções animadas
-            const secoesAnimadas = document.querySelectorAll('.secao-animada, .depoimento-card');
-            secoesAnimadas.forEach(secao => observador.observe(secao));
-
-            // Função para animar o contador
-            function animarContador(elemento) {
-                const valorFinal = parseInt(elemento.getAttribute('data-valor-final'), 10);
-                let valorInicial = 0;
-                const duracao = 2000; // 2 segundos
-                const incremento = Math.ceil(valorFinal / (duracao / 16));
-
-                const intervalo = setInterval(() => {
-                    valorInicial += incremento;
-                    if (valorInicial >= valorFinal) {
-                        elemento.innerText = valorFinal.toLocaleString('pt-BR'); // Formata para "1.200"
-                        clearInterval(intervalo);
-                    } else {
-                        elemento.innerText = valorInicial.toLocaleString('pt-BR');
-                    }
-                }, 16); // ~60fps
-            }
+            // Observar todos os cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                observador.observe(card);
+            });
         });
     </script>
 
