@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sábio Oculto - O Ecossistema Invisível</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ------------------- */
+        /* 1. ESTÉTICA VISUAL  */
+        /* ------------------- */
+
+        /* TEMA CLARO (PADRÃO) */
+        :root {
+            --cor-fundo: #FFFFFF;
+            --cor-texto: #1A1A1A;
+            --cor-titulo: #001F3F; /* Azul-Marinho Escuro */
+            --cor-destaque: #B8860B; /* Dourado Discreto */
+            --cor-branco: #FFFFFF;
+            --cor-secao-clara: #f8f9fa;
+            --cor-texto-secundario: #6c757d;
+            --cor-borda: #dee2e6;
+            --cor-sombra-botao: rgba(0, 31, 63, 0.15);
+            --cor-sombra-botao-hover: rgba(0, 31, 63, 0.25);
+        }
+
+        /* TEMA ESCURO (ATIVADO PELA PREFERÊNCIA DO USUÁRIO) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --cor-fundo: #1A1A1A;
+                --cor-texto: #E0E0E0;
+                --cor-titulo: #F0B90B; /* Dourado mais vibrante */
+                --cor-destaque: #DAA520;
+                --cor-branco: #FFFFFF;
+                --cor-secao-clara: #222529; /* Cinza escuro para seções */
+                --cor-texto-secundario: #a9a9a9;
+                --cor-borda: #333;
+                --cor-sombra-botao: rgba(240, 185, 11, 0.2);
+                --cor-sombra-botao-hover: rgba(240, 185, 11, 0.3);
+            }
+            
+            /* Estilo do botão para o TEMA ESCURO */
+            .cta-button {
+                background-color: var(--cor-titulo);
+                color: #1A1A1A; /* Texto escuro no botão claro */
+            }
+            
+            .prova-frase {
+               color: var(--cor-texto);
+            }
+        }
+
+        /* ------------------- */
+        /* 2. ESTILOS GERAIS (BASE) */
+        /* ------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.7;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* ------------------- */
+        /* 3. LAYOUT E ESTRUTURA */
+        /* ------------------- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--cor-titulo);
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+        }
+            
+        /* ------------------- */
+        /* 4. COMPONENTES        */
+        /* ------------------- */
+
+        /* BOTÃO CTA */
+        .cta-button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            background-color: var(--cor-titulo);
+            color: var(--cor-branco);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 4px 12px var(--cor-sombra-botao);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s, color 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px var(--cor-sombra-botao-hover);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px var(--cor-sombra-botao);
+        }
+
+        /* ------------------- */
+        /* 5. ESTILOS DE SEÇÃO   */
+        /* ------------------- */
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero .subtitulo {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* DOR */
+        .dor ul {
+            list-style: none;
+            max-width: 500px;
+            margin: 2rem auto;
+            text-align: left;
+            padding: 0 1rem;
+        }
+
+        .dor li {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .dor li::before {
+            content: '❌';
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .dor .convite-final {
+            font-weight: 700;
+            color: var(--cor-titulo);
+        }
+
+        /* REVELAÇÃO */
+        .revelacao {
+            background-color: var(--cor-secao-clara);
+            transition: background-color 0.3s;
+        }
+
+        .revelacao ul {
+            list-style: none;
+            max-width: 600px;
+            margin: 2rem auto;
+            text-align: left;
+            padding: 0 1rem;
+        }
+            
+        .revelacao li {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .revelacao li::before {
+            content: '✅';
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: var(--cor-destaque);
+        }
+
+        /* PROVA SOCIAL */
+        .prova-social {
+            background-color: var(--cor-secao-clara);
+            transition: background-color 0.3s;
+        }
+        
+        .prova-frase {
+            margin-top: 2rem;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--cor-titulo);
+        }
+
+        /* OFERTA FINAL */
+        .oferta h2 {
+            color: var(--cor-destaque);
+        }
+
+        .oferta .subtexto {
+            margin-top: -1rem;
+        }
+
+        .oferta .cta-button {
+            transform: scale(1.1);
+            margin-top: 2rem;
+        }
+
+        .oferta .cta-button:hover {
+            transform: scale(1.1) translateY(-4px);
+        }
+
+        .oferta .cta-button:active {
+            transform: scale(1.1) translateY(-1px);
+        }
+            
+        .oferta .garantia {
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            color: var(--cor-texto-secundario);
+        }
+            
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            font-size: 0.9rem;
+            color: var(--cor-texto-secundario);
+            border-top: 1px solid var(--cor-borda);
+            transition: color 0.3s, border-color 0.3s;
+        }
+
+        /* -------------------------------- */
+        /* 6. AJUSTES PARA DISPOSITIVOS MÓVEIS */
+        /* -------------------------------- */
+
+        @media (max-width: 768px) {
+            section {
+                padding: 2.5rem 0;
+            }
+
+            h2 {
+                margin-bottom: 1.5rem;
+            }
+
+            .hero {
+                min-height: 85vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Você está postando, se esforçando, mas o TikTok continua te ignorando?</h1>
+            <p class="subtitulo">Descubra o ecossistema invisível que transforma vídeos comuns em dólares na sua conta.<br>O que os influenciadores não contam, o Sábio Oculto vai revelar.</p>
+            <a href="https://mpago.la/2PeHWdB" class="cta-button">Acesse os Segredos em Dólar</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="dor">
+            <div class="container">
+                <h2>Se você já...</h2>
+                <ul>
+                    <li>Passou horas editando vídeos e teve menos de 100 views</li>
+                    <li>Tentou copiar os grandes, mas não cresceu nada</li>
+                    <li>Acreditou que “era só postar todo dia”... mas não deu certo</li>
+                </ul>
+                <p class="convite-final">Então essa página é pra você.</p>
+            </div>
+        </section>
+
+        <section class="revelacao">
+            <div class="container">
+                <h2>Existe um ecossistema invisível por trás dos vídeos virais.</h2>
+                <p>Quem cresce e lucra no TikTok não está apenas postando vídeos… Eles fazem parte de um jogo estratégico, onde cada detalhe segue um plano oculto de conversão. Esse conhecimento está escondido, mas não para quem sabe onde olhar.</p>
+                <ul>
+                    <li>Como transformar um vídeo de 15 segundos em uma máquina de venda em dólar</li>
+                    <li>O segredo por trás da entrega (sem depender de sorte)</li>
+                    <li>Como influenciadores menores estão ganhando mais que gigantes</li>
+                    <li>Monetize sem precisar virar influencer</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="autoridade">
+            <div class="container">
+                <h2>Quem está por trás do véu?</h2>
+                <p>O Sábio Oculto não é um guru, mas sim alguém que entendeu o sistema. Após testar centenas de estratégias, ele encontrou o que realmente funciona — e agora revela os segredos que nunca aparecem nos vídeos virais.</p>
+            </div>
+        </section>
+        
+        <section class="prova-social">
+            <div class="container">
+                <h2>Não acredite em mim. Acredite nos resultados.</h2>
+                <p class="prova-frase">"Eu saí de 500 visualizações para meu primeiro mês com mais de $1.200 dólares. É outro jogo."</p>
+            </div>
+        </section>
+
+        <section id="oferta" class="oferta">
+            <div class="container">
+                <h2>Agora o conhecimento não está mais oculto.</h2>
+                <p class="subtexto">Mas estará por pouco tempo.</p>
+                <p>O acesso ao ecossistema invisível em dólar está liberado, mas só para quem agir enquanto o véu ainda está aberto. Em breve, essa oportunidade será retirada do ar.</p>
+                <a href="https://mpago.la/2PeHWdB" class="cta-button">🔓 Revelar os Segredos Agora</a>
+                <p class="garantia">Acesso imediato. Garantido. Sem enrolação.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sábio Oculto. Todos os direitos reservados. A revelação espera por você.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
