@@ -161,23 +161,18 @@
       color: #aaaaaa;
       font-size: 14px;
     }
-
-    /* OFFER COM CAIXA DESFOCADA */
+    
+    /* ESTILOS DA SEÇÃO DE OFERTA ADICIONADOS/ATUALIZADOS */
     .offer-section {
-      background-color: transparent;
-      padding: 60px 20px;
-      color: #ffffff;
+        padding: 60px 20px;
+        color: #ffffff;
     }
-
     .blur-wrapper {
       position: relative;
       width: 100%;
       border-radius: 20px;
       overflow: hidden;
-      max-width: 1200px;
-      margin: 0 auto;
     }
-
     .blur-bg {
       position: absolute;
       width: 100%;
@@ -186,48 +181,33 @@
       filter: blur(20px) brightness(0.5);
       z-index: 0;
     }
-
     .blur-box {
-      position: relative;
-      z-index: 1;
-      padding: 40px 20px;
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        position: relative;
+        z-index: 1;
     }
-
     .offer-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
     }
-
     .offer-text {
       flex: 1;
       min-width: 300px;
-      padding: 20px;
     }
-
     .offer-text h2 {
       font-size: 26px;
       margin-bottom: 25px;
       line-height: 1.5;
     }
-
     .offer-text .highlight {
       color: #10d38d;
       font-weight: bold;
     }
-
     .offer-text ul {
       list-style: none;
       padding-left: 0;
     }
-
     .offer-text ul li {
       font-size: 16px;
       margin-bottom: 15px;
@@ -235,7 +215,6 @@
       padding-left: 28px;
       color: #dddddd;
     }
-
     .offer-text ul li::before {
       content: '✔';
       position: absolute;
@@ -243,27 +222,22 @@
       color: #10d38d;
       font-weight: bold;
     }
-
     .offer-price {
       flex: 1;
       min-width: 280px;
-      padding: 20px;
       text-align: center;
     }
-
     .price-label {
       font-size: 14px;
       color: #aaa;
       margin-bottom: 8px;
     }
-
     .price-value {
       font-size: 40px;
       font-weight: bold;
       color: #ffffff;
       margin-bottom: 20px;
     }
-
     .price-hidden {
       letter-spacing: 2px;
       font-weight: bold;
@@ -418,7 +392,6 @@
     <p>Pré-venda inicia em: <span>05</span> dias <span>04</span> hrs <span>25</span> min <span>24</span> seg</p>
   </div>
 
-  <!-- seção de audiência -->
   <div class="audience-section">
     <div class="audience-overlay">
       <div class="audience-container">
@@ -436,13 +409,12 @@
     </div>
   </div>
 
-  <!-- OFERTA COM CAIXA DESFOCADA -->
   <div class="offer-section">
-    <div class="blur-wrapper">
+    <div class="blur-wrapper" style="max-width: 600px; margin-left: 0;">
       <img src="images/sabio13.png" alt="Fundo desfocado" class="blur-bg" />
       <div class="blur-box">
-        <div class="offer-container">
-          <div class="offer-text">
+        <div class="offer-container" style="flex-direction: column; align-items: flex-start;">
+          <div class="offer-text" style="padding: 10px 20px;">
             <h2>Essa é sua <span class="highlight">única chance</span><br> de aprender no <strong>BackStage</strong>:</h2>
             <ul>
               <li><strong>Imersão de 6 semanas</strong> com Thiago Finch e equipe</li>
@@ -452,7 +424,7 @@
               <li><strong>Bônus:</strong> Surpresa</li>
             </ul>
           </div>
-          <div class="offer-price">
+          <div class="offer-price" style="padding-left: 20px; padding-bottom: 20px;">
             <p class="price-label">POR:</p>
             <p class="price-value">R$ <span class="price-hidden">?9?7</span></p>
             <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA PARA RECEBER A OFERTA</a>
@@ -462,7 +434,6 @@
     </div>
   </div>
 
-  <!-- INTERESSE -->
   <div class="interest-section">
     <div class="interest-content">
       <div class="interest-image">
@@ -479,7 +450,6 @@
     </div>
   </div>
 
-  <!-- EXCLUSIVO -->
   <div class="exclusive-section">
     <div class="exclusive-container">
       <div class="exclusive-text">
