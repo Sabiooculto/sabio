@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Renda Global com TikTok</title>
   <style>
-    /* Estilos Gerais */
     * {
       margin: 0;
       padding: 0;
@@ -19,24 +18,6 @@
       overflow-x: hidden;
     }
 
-    /* Efeito de Fundo Desfocado */
-    .blur-wrapper {
-      position: relative;
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .blur-bg {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(20px) brightness(0.5);
-      z-index: 0;
-    }
-
-    /* Barra Superior */
     .top-bar {
       background-color: #0f0f0f;
       padding: 10px 20px;
@@ -45,7 +26,6 @@
       color: #7ef3a1;
     }
 
-    /* Seção Hero */
     .hero {
       display: flex;
       flex-wrap: wrap;
@@ -90,7 +70,6 @@
       display: inline-block;
       box-shadow: 0 0 15px #10d38d;
       transition: all 0.3s ease;
-      text-align: center;
     }
 
     .cta-button:hover {
@@ -110,7 +89,6 @@
       border-radius: 12px;
     }
 
-    /* Contagem Regressiva */
     .countdown {
       display: flex;
       justify-content: center;
@@ -129,7 +107,6 @@
       margin: 0 5px;
     }
 
-    /* Seção Público-Alvo */
     .audience-section {
       position: relative;
       background: url('images/sabio15.png') center center / cover no-repeat;
@@ -185,26 +162,54 @@
       font-size: 14px;
     }
 
-    /* Seção da Oferta (CORRIGIDA) */
+    /* OFFER COM CAIXA DESFOCADA */
     .offer-section {
-      background: linear-gradient(90deg, #0c0c0c 60%, #101010);
+      background-color: transparent;
       padding: 60px 20px;
       color: #ffffff;
     }
 
-    .offer-container {
+    .blur-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .blur-bg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: blur(20px) brightness(0.5);
+      z-index: 0;
+    }
+
+    .blur-box {
+      position: relative;
+      z-index: 1;
+      padding: 40px 20px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .offer-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 40px;
     }
 
     .offer-text {
       flex: 1;
       min-width: 300px;
+      padding: 20px;
     }
 
     .offer-text h2 {
@@ -239,32 +244,24 @@
       font-weight: bold;
     }
 
-    .offer-price-card {
+    .offer-price {
       flex: 1;
-      min-width: 300px;
-      max-width: 450px;
-    }
-
-    .offer-price-content {
-      position: relative;
-      z-index: 1;
-      padding: 40px;
+      min-width: 280px;
+      padding: 20px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
     }
 
     .price-label {
       font-size: 14px;
       color: #aaa;
+      margin-bottom: 8px;
     }
 
     .price-value {
       font-size: 40px;
       font-weight: bold;
       color: #ffffff;
+      margin-bottom: 20px;
     }
 
     .price-hidden {
@@ -272,7 +269,6 @@
       font-weight: bold;
     }
 
-    /* Seção de Interesse */
     .interest-section {
       background-color: #0e0e0e;
       padding: 60px 20px;
@@ -337,7 +333,6 @@
       left: 0;
     }
 
-    /* Seção Exclusiva */
     .exclusive-section {
       background-color: #0b0b0b;
       padding: 60px 20px;
@@ -387,24 +382,10 @@
       border-radius: 10px;
     }
 
-    /* Media Queries para Responsividade */
     @media (max-width: 768px) {
       .hero, .interest-content, .exclusive-container, .audience-container, .offer-container {
         flex-direction: column;
         text-align: center;
-      }
-
-      .hero-text, .audience-title, .offer-text, .interest-text, .exclusive-text {
-        text-align: center;
-      }
-      
-      .offer-text ul li {
-        padding-left: 0;
-        text-align: left; /* Mantém alinhamento da lista */
-      }
-      
-      .offer-text ul li::before {
-        display: none; /* Opcional: remove o checkmark no mobile para um visual mais limpo */
       }
 
       .hero-text h1 { font-size: 28px; }
@@ -426,10 +407,10 @@
       <h1><span>Renda Global com TikTok</span></h1>
       <p><strong>Por uma única vez</strong>, você vai descobrir os bastidores das estratégias que transformam perfis comuns em fontes de <strong>renda em dólar</strong> usando apenas o celular.</p>
       <p>Cada detalhe foi pensado para funcionar mesmo que você esteja começando do zero. Pela <span style="color: #7ef3a1;">primeira e única vez</span>, você terá acesso ao plano completo para aplicar e lucrar com o TikTok de forma profissional e automatizada.</p>
-      <a href="https://seulink.com" class="cta-button" aria-label="Entrar no grupo de pré-venda Renda Global com TikTok">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
+      <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
     </div>
     <div class="hero-image">
-      <img src="images/sabio12.png" alt="Imagem principal" />
+      <img src="images/sabio12.png" alt="Imagem destaque">
     </div>
   </div>
 
@@ -437,6 +418,7 @@
     <p>Pré-venda inicia em: <span>05</span> dias <span>04</span> hrs <span>25</span> min <span>24</span> seg</p>
   </div>
 
+  <!-- seção de audiência -->
   <div class="audience-section">
     <div class="audience-overlay">
       <div class="audience-container">
@@ -454,30 +436,33 @@
     </div>
   </div>
 
+  <!-- OFERTA COM CAIXA DESFOCADA -->
   <div class="offer-section">
-    <div class="offer-container">
-      <div class="offer-text">
-        <h2>Essa é sua <span class="highlight">única chance</span><br> de aprender no <strong>BackStage</strong>:</h2>
-        <ul>
-          <li><strong>Imersão de 6 semanas</strong> com Thiago Finch e equipe</li>
-          <li>Como construir sua própria <strong>flywheel milionária</strong></li>
-          <li>Como criar sua própria audiência e <strong>vender milhões</strong></li>
-          <li><strong>Táticas de 9 dígitos</strong> utilizadas no maior lançamento da América Latina</li>
-          <li><strong>Bônus:</strong> Surpresa</li>
-        </ul>
-      </div>
-      
-      <div class="offer-price-card blur-wrapper">
-        <img src="images/sabio13.png" alt="Fundo desfocado" class="blur-bg" />
-        <div class="offer-price-content">
-          <p class="price-label">POR:</p>
-          <p class="price-value">R$ <span class="price-hidden">?9?7</span></p>
-          <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO E RECEBER A OFERTA</a>
+    <div class="blur-wrapper">
+      <img src="images/sabio13.png" alt="Fundo desfocado" class="blur-bg" />
+      <div class="blur-box">
+        <div class="offer-container">
+          <div class="offer-text">
+            <h2>Essa é sua <span class="highlight">única chance</span><br> de aprender no <strong>BackStage</strong>:</h2>
+            <ul>
+              <li><strong>Imersão de 6 semanas</strong> com Thiago Finch e equipe</li>
+              <li>Como construir sua própria <strong>flywheel milionária</strong></li>
+              <li>Como criar sua própria audiência e <strong>vender milhões</strong></li>
+              <li><strong>Táticas de 9 dígitos</strong> utilizadas no maior lançamento da América Latina</li>
+              <li><strong>Bônus:</strong> Surpresa</li>
+            </ul>
+          </div>
+          <div class="offer-price">
+            <p class="price-label">POR:</p>
+            <p class="price-value">R$ <span class="price-hidden">?9?7</span></p>
+            <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA PARA RECEBER A OFERTA</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- INTERESSE -->
   <div class="interest-section">
     <div class="interest-content">
       <div class="interest-image">
@@ -494,13 +479,14 @@
     </div>
   </div>
 
+  <!-- EXCLUSIVO -->
   <div class="exclusive-section">
     <div class="exclusive-container">
       <div class="exclusive-text">
         <h2><span class="highlight">Por uma única vez</span>, vou revelar o método que transformou um simples celular em uma máquina de renda em dólar.</h2>
         <p>Cada passo que eu dei foi pensado para gerar resultados consistentes. Pela <strong>primeira e única vez</strong>, você terá a oportunidade de acessar essa estrutura e aplicar no seu próprio conteúdo.</p>
         <p>Não importa se você está começando do zero — esse material foi criado para funcionar mesmo sem audiência ou experiência.</p>
-        <a href="https://seulink.com" class="cta-button" aria-label="Entrar no grupo de pré-venda Renda Global com TikTok">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
+        <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
       </div>
       <div class="exclusive-image">
         <img src="images/sabio14.png" alt="Imagem lateral TikTok" />
