@@ -95,7 +95,6 @@
       align-items: center;
       gap: 10px;
       padding: 20px;
-      font-size: 18px;
       background-color: #111;
       color: #7ef3a1;
       font-weight: 600;
@@ -406,17 +405,12 @@
       }
 
       .countdown {
-        flex-direction: row;
-        gap: 5px;
-        padding: 12px;
-      }
-      
-      #countdown-text {
-        display: none;
+        padding: 15px;
+        font-size: 16px;
       }
       
       .countdown span {
-        font-size: 16px;
+        font-size: 18px;
         margin: 0 3px;
       }
 
@@ -508,12 +502,10 @@
   </div>
 
   <div class="countdown">
-    <p id="countdown-text">A OFERTA TERMINA EM: 
-      <span id="days">00</span> dias 
-      <span id="hours">00</span> hrs 
-      <span id="minutes">00</span> min 
-      <span id="seconds">00</span> seg
-    </p>
+    <span id="days">00</span> dias 
+    <span id="hours">00</span> hrs 
+    <span id="minutes">00</span> min 
+    <span id="seconds">00</span> seg
   </div>
 
   <div class="audience-section">
@@ -619,7 +611,7 @@
       // Se a contagem regressiva terminar, exibe uma mensagem
       if (distance < 0) {
         clearInterval(x);
-        document.querySelector(".countdown").innerHTML = "<p>OFERTA ENCERRADA</p>";
+        document.querySelector(".countdown").innerHTML = "<span>OFERTA ENCERRADA</span>";
       }
     }, 1000);
   </script>
