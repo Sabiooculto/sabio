@@ -405,6 +405,21 @@
         padding: 0;
       }
 
+      .countdown {
+        flex-direction: row;
+        gap: 5px;
+        padding: 12px;
+      }
+      
+      #countdown-text {
+        display: none;
+      }
+      
+      .countdown span {
+        font-size: 16px;
+        margin: 0 3px;
+      }
+
       .audience-title {
         padding-right: 0;
         margin-bottom: 30px;
@@ -604,7 +619,7 @@
       // Se a contagem regressiva terminar, exibe uma mensagem
       if (distance < 0) {
         clearInterval(x);
-        document.getElementById("countdown-text").innerHTML = "OFERTA ENCERRADA";
+        document.querySelector(".countdown").innerHTML = "<p>OFERTA ENCERRADA</p>";
       }
     }, 1000);
   </script>
