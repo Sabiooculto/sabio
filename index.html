@@ -162,17 +162,21 @@
       font-size: 14px;
     }
     
-    /* ESTILOS DA SEÇÃO DE OFERTA ADICIONADOS/ATUALIZADOS */
     .offer-section {
-        padding: 60px 20px;
-        color: #ffffff;
+      padding: 60px 20px;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
     }
+    
     .blur-wrapper {
       position: relative;
       width: 100%;
       border-radius: 20px;
       overflow: hidden;
+      max-width: 600px; 
     }
+    
     .blur-bg {
       position: absolute;
       width: 100%;
@@ -181,33 +185,43 @@
       filter: blur(20px) brightness(0.5);
       z-index: 0;
     }
+    
     .blur-box {
-        position: relative;
-        z-index: 1;
+      position: relative;
+      z-index: 1;
+      padding: 30px;
     }
+    
     .offer-container {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+      flex-direction: column;
       align-items: center;
     }
+    
     .offer-text {
-      flex: 1;
-      min-width: 300px;
+      width: 100%;
+      padding: 10px 0;
+      text-align: center;
     }
+    
     .offer-text h2 {
       font-size: 26px;
       margin-bottom: 25px;
       line-height: 1.5;
     }
+    
     .offer-text .highlight {
       color: #10d38d;
       font-weight: bold;
     }
+    
     .offer-text ul {
       list-style: none;
       padding-left: 0;
+      text-align: left;
+      display: inline-block;
     }
+    
     .offer-text ul li {
       font-size: 16px;
       margin-bottom: 15px;
@@ -215,6 +229,7 @@
       padding-left: 28px;
       color: #dddddd;
     }
+    
     .offer-text ul li::before {
       content: '✔';
       position: absolute;
@@ -222,22 +237,27 @@
       color: #10d38d;
       font-weight: bold;
     }
+    
     .offer-price {
-      flex: 1;
-      min-width: 280px;
+      width: 100%;
       text-align: center;
+      padding: 20px 0;
+      margin-top: 20px;
     }
+    
     .price-label {
       font-size: 14px;
       color: #aaa;
       margin-bottom: 8px;
     }
+    
     .price-value {
       font-size: 40px;
       font-weight: bold;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin: 15px 0;
     }
+    
     .price-hidden {
       letter-spacing: 2px;
       font-weight: bold;
@@ -356,17 +376,101 @@
       border-radius: 10px;
     }
 
+    /* ================================== */
+    /* === ESTILOS APENAS PARA CELULAR === */
+    /* ================================== */
     @media (max-width: 768px) {
-      .hero, .interest-content, .exclusive-container, .audience-container, .offer-container {
+      .hero, .interest-content, .exclusive-container, .audience-container {
         flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero-text {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .hero-text h1 { 
+        font-size: 28px; 
         text-align: center;
       }
 
-      .hero-text h1 { font-size: 28px; }
-      .interest-image { filter: blur(2px); opacity: 0.6; }
-      .audience-title h2 { font-size: 22px; margin-bottom: 20px; }
-      .audience-list li { font-size: 16px; }
-      .price-value { font-size: 32px; }
+      .hero-text p {
+        text-align: center;
+      }
+
+      .hero-image {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .audience-title {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+      
+      .audience-title h2 { 
+        font-size: 22px; 
+        margin-bottom: 20px; 
+        text-align: center;
+      }
+      
+      .audience-list { 
+        text-align: center; 
+      }
+      
+      .audience-list li { 
+        display: block; 
+        text-align: center; 
+      }
+      
+      .audience-list li small { 
+        display: block; 
+      }
+      
+      .interest-image { 
+        filter: blur(2px); 
+        opacity: 0.6; 
+        order: 2;
+      }
+      
+      .interest-text { 
+        order: 1;
+        text-align: center;
+      }
+      
+      .interest-text ul { 
+        display: inline-block; 
+        text-align: left; 
+      }
+      
+      .offer-section {
+        padding: 40px 20px;
+      }
+      
+      .blur-wrapper {
+        max-width: 100%;
+      }
+      
+      .blur-box {
+        padding: 20px;
+      }
+      
+      .offer-text h2 {
+        font-size: 22px;
+      }
+      
+      .price-value { 
+        font-size: 32px; 
+      }
+      
+      .cta-button {
+        width: 100%;
+        max-width: 300px;
+        padding: 15px;
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -384,7 +488,7 @@
       <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
     </div>
     <div class="hero-image">
-      <img src="images/sabio12.png" alt="Imagem destaque">
+      <img src="images/sabio12.png" alt="Homem mostrando resultados financeiros no celular">
     </div>
   </div>
 
@@ -415,11 +519,11 @@
   </div>
 
   <div class="offer-section">
-    <div class="blur-wrapper" style="max-width: 600px; margin-left: 0;">
+    <div class="blur-wrapper">
       <img src="images/sabio13.png" alt="Fundo desfocado" class="blur-bg" />
       <div class="blur-box">
-        <div class="offer-container" style="flex-direction: column; align-items: flex-start;">
-          <div class="offer-text" style="padding: 10px 20px;">
+        <div class="offer-container">
+          <div class="offer-text">
             <h2>Essa é sua <span class="highlight">única chance</span><br> de aprender no <strong>BackStage</strong>:</h2>
             <ul>
               <li><strong>Imersão de 6 semanas</strong> com Thiago Finch e equipe</li>
@@ -429,7 +533,7 @@
               <li><strong>Bônus:</strong> Surpresa</li>
             </ul>
           </div>
-          <div class="offer-price" style="padding-left: 20px; padding-bottom: 20px;">
+          <div class="offer-price">
             <p class="price-label">POR:</p>
             <p class="price-value">R$ <span class="price-hidden">?9?7</span></p>
             <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA PARA RECEBER A OFERTA</a>
@@ -464,7 +568,7 @@
         <a href="https://seulink.com" class="cta-button">ENTRAR NO GRUPO DE PRÉ-VENDA</a>
       </div>
       <div class="exclusive-image">
-        <img src="images/sabio14.png" alt="Imagem lateral TikTok" />
+        <img src="images/sabio14.png" alt="Demonstração do método no celular" />
       </div>
     </div>
   </div>
@@ -501,11 +605,6 @@
       if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown-text").innerHTML = "OFERTA ENCERRADA";
-        // Opcional: esconder os números se preferir
-        document.getElementById("days").style.display = 'none';
-        document.getElementById("hours").style.display = 'none';
-        document.getElementById("minutes").style.display = 'none';
-        document.getElementById("seconds").style.display = 'none';
       }
     }, 1000);
   </script>
