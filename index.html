@@ -389,7 +389,12 @@
   </div>
 
   <div class="countdown">
-    <p>Pré-venda inicia em: <span>05</span> dias <span>04</span> hrs <span>25</span> min <span>24</span> seg</p>
+    <p id="countdown-text">A OFERTA TERMINA EM: 
+      <span id="days">00</span> dias 
+      <span id="hours">00</span> hrs 
+      <span id="minutes">00</span> min 
+      <span id="seconds">00</span> seg
+    </p>
   </div>
 
   <div class="audience-section">
@@ -463,6 +468,47 @@
       </div>
     </div>
   </div>
+
+  <script>
+    // Defina a data final da contagem regressiva (5 dias a partir de agora)
+    const countDownDate = new Date().getTime() + (5 * 24 * 60 * 60 * 1000);
+
+    // Atualiza o cronômetro a cada 1 segundo
+    const x = setInterval(function() {
+
+      // Pega a data e hora de hoje
+      const now = new Date().getTime();
+
+      // Encontra a distância entre agora e a data final
+      const distance = countDownDate - now;
+
+      // Cálculos de tempo para dias, horas, minutos e segundos
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Função para adicionar um zero à esquerda se o número for menor que 10
+      const formatTime = (time) => time < 10 ? `0${time}` : time;
+
+      // Exibe o resultado nos elementos com os IDs correspondentes
+      document.getElementById("days").innerText = formatTime(days);
+      document.getElementById("hours").innerText = formatTime(hours);
+      document.getElementById("minutes").innerText = formatTime(minutes);
+      document.getElementById("seconds").innerText = formatTime(seconds);
+
+      // Se a contagem regressiva terminar, exibe uma mensagem
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown-text").innerHTML = "OFERTA ENCERRADA";
+        // Opcional: esconder os números se preferir
+        document.getElementById("days").style.display = 'none';
+        document.getElementById("hours").style.display = 'none';
+        document.getElementById("minutes").style.display = 'none';
+        document.getElementById("seconds").style.display = 'none';
+      }
+    }, 1000);
+  </script>
 
 </body>
 </html>
